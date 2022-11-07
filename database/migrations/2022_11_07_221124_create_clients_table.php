@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateCreditsTable extends Migration
+class CreateClientsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,12 @@ class CreateCreditsTable extends Migration
      */
     public function up()
     {
-        Schema::create('credits', function (Blueprint $table) {
+        Schema::create('clients', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
-            $table->bigInteger('min_amount');
-            $table->bigInteger('max_amount');
-            $table->decimal('rate');
+            $table->string('name');
+            $table->string('email');
+            $table->string('phone');
         });
     }
 
@@ -29,6 +29,6 @@ class CreateCreditsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('credits');
+        Schema::dropIfExists('clients');
     }
 }
