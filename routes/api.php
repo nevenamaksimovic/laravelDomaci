@@ -5,6 +5,10 @@ use Illuminate\Support\Facades\Route;
 use App\Models\User;
 use App\Http\Controllers\api\KreditController;
 use App\Http\Controllers\api\ZahtevController;
+use App\Http\Controllers\ClientController;
+use App\Http\Controllers\CreditController;
+use App\Http\Controllers\CreditRequestController;
+use App\Models\CreditRequest;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\ValidationException;
 
@@ -50,4 +54,7 @@ Route::post('/register', function (Request $request) {
 });
 
 Route::group(['middleware' => ['auth:sanctum']], function () {
+    Route::apiResource('credit-requests', CreditRequestController::class);
+    Route::get('credits', [CreditController::class, 'index']);
+    Route::get('clients', [ClientController::class, 'index']);
 });
