@@ -47,7 +47,7 @@ Route::post('/register', function (Request $request) {
     $user = User::create([
         "name" => $request->name,
         "email" => $request->email,
-        "email" => Hash::make($request->password),
+        "password" => Hash::make($request->password),
     ]);
 
     return response()->json(["user" => $user, "token" => $user->createToken($request->email)->plainTextToken]);
